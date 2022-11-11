@@ -25,7 +25,7 @@ def step_impl(context, correo, contrasenia, contrasenia2):
 
 @when(u'presiono el botón "Registrar"')
 def step_impl(context):
-    context.driver.find_element(By.CLASS_NAME, 'btn-success').click()
+    context.driver.find_element(By.XPATH, '/html/body/div/div/div[2]/form/div[3]/div/a').click()
 
 
 @then(u'puedo ver el mensaje de salida"{esperado}"')
