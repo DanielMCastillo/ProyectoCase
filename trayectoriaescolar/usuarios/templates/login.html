@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Login CASEADMIN</title>
+  <title>Login CASE</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -20,12 +20,11 @@
   <!-- /.login-logo -->
   <div class="card card-outline card-primary">
     <div class="card-header text-center">
-      <a href="#" class="h1"><b>SSTE</b>UAZ</a>
+      <a href="../../index2.html" class="h1"><b>AdminCASE - </b>SSTE</a>
       <img src="{% static 'dist/img/logocase.png' %}" alt="logocase" width="200px" height = "200px">
     </div>
     <div class="card-body">
       <p class="login-box-msg">Inicio de sesión</p>
-      
       {% if form.errors %}
         {% comment %} {{form.errors}} {% endcomment %}
         <div class="alert alert-warning">
@@ -51,12 +50,12 @@
           <input type="text" class="form-control" placeholder="Usuario" name="username">
           <div class="input-group-append">
             <div class="input-group-text">
-              <span class="fas fa-user"></span>
+              <span class="fas fa-envelope"></span>
             </div>
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Password" name="password">
+          <input type="password" class="form-control" placeholder="Contraseña" name="password">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
@@ -64,16 +63,16 @@
           </div>
         </div>
         <div class="row">
-          <!-- /.col -->
           <div class="col-12">
-            <a class="btn btn-danger" href="{% url 'usuarios:administradores' %}">Ingresar</a>
+            <button type="submit" class="btn btn-primary btn-block">Ingresar</button>
+            <input type="hidden" name="next" value="{{next}}">
           </div>
           <!-- /.col -->
         </div>
       </form>
 
-      <p class="mb-1">
-        <a href="forgot-password.html">¿Olvidó su contraseña?</a>
+      <p class="mb-2">
+        <a href="forgot-password.html">Olvidé mi contraseña</a>
       </p>
       <p class="mb-0">
         <a href="{% url 'usuarios:registrar' %}" class="text-center">Registrar nuevo usuario</a>

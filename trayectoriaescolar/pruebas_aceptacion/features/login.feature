@@ -4,13 +4,16 @@ Característica: Login del sistema
     Para que me paguen
 
         Escenario: Credenciales válidas
-            Dado que ingreso al sistema en el dominio "http://localhost:8000/"
-            Y escribo mi usuario "Caseadmin" y contraseña "Case123."
+            Dado que ingreso al sistema en el dominio "http://localhost:8000/entrar"
+            Y escribo mi usuario "amcdanymx" y contraseña "Ronaldinho999."
             Cuando presiono el botón Ingresar
-            Entonces puedo ver mi nombre de usuario "Caseadmin" en la página principal
-
+            Entonces puedo ver mi nombre de usuario "amcdanymx" en la página principal.
+        
+        
         Escenario: Credenciales invalidas
-            Dado que ingreso al sistema en el dominio "http://localhost:8000/"
-            Y escribo mi usuario "Caseadmin2" y contraseña "caseadmin1234"
+            Dado que ingreso al sistema en el dominio "http://localhost:8000/entrar"
+            Y escribo mi usuario "amcdanymx" y contraseña "Juan22"
             Cuando presiono el botón Ingresar
             Entonces puedo ver el mensaje "Verifica tus datos de acceso."
+        
+        

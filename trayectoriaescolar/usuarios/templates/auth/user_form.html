@@ -19,7 +19,7 @@
 <div class="register-box">
   <div class="card card-outline card-primary">
     <div class="card-body">
-      <p class="login-box-msg">Registrar nuevo administrador</p>
+      <h1 class="login-box-msg">Registrar nuevo administrador</h1>
       {% if form.errors %}
         <div class="alert alert-warning">
           {{form.errors}}
@@ -68,17 +68,10 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-8">
-            <div class="icheck-primary">
-              <input type="checkbox" id="agreeTerms" name="terms" value="agree">
-              <label for="agreeTerms">
-               <a href="#"> Términos y condiciones</a>
-              </label>
-            </div>
-          </div>
           <!-- /.col -->
-          <div class="col-4">
+          <div class="col-12">
             <button type="submit" class="btn btn-primary btn-block">Registrar</button>
+            <input type="hidden" name="next" value="{{next}}">
           </div>
           <!-- /.col -->
         </div>
