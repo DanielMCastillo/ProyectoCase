@@ -1,8 +1,7 @@
 from django.test import TestCase
-from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
-
-from usuarios.views import RegistrarAdmin
+from usuarios.models import Administradores
+from usuarios.views import *
 
 class TestViewsCase(TestCase):
     def setUp(self):
@@ -15,23 +14,25 @@ class TestViewsCase(TestCase):
             
 
         )
+        
         usuario.set_password('Ronaldinho999.')
         usuario.save()
-        self.client.login(username='amcdanymx', password='Ronaldinho999')
+        self.client.login(username='amcdanymx', password='Ronaldinho999.')
 
-        
-    def test_bienvenida_estatus(self):
-        respuesta = self.client.get('/bienvenida' , {}, follow=True)
-        self.assertEquals(respuesta.status_code, 200)
-
-    def test_registrar_estatus(self):
-        respuesta = self.client.get('/registrar' , {}, follow=True)
-        self.assertEquals(respuesta.status_code, 200)
-        
+    
     def test_login_estatus(self):
         respuesta = self.client.get('/entrar', {}, follow=True)
         self.assertEquals(respuesta.status_code, 200)
         
+    
+    def test_registrar_estatus(self):
+        respuesta = self.client.get('/registrar' , {}, follow=True)
+        self.assertEquals(respuesta.status_code, 200)
+        
+    def test_bienvenida_estatus(self):
+        respuesta = self.client.get('' , {}, follow=True)
+        self.assertEquals(respuesta.status_code, 200)
+
     def test_adminisitradores_estatus(self):
         respuesta = self.client.get('/administradores', {}, follow=True)
         self.assertEquals(respuesta.status_code, 200)
@@ -44,7 +45,13 @@ class TestViewsCase(TestCase):
         response = self.client.get('/entrar')
         self.assertTemplateUsed(response, 'login.html')
     
-    def test_lista_administradores(self):
-        respuesta = self.client.get('/administradores', {}, follow=True)
-        self.assertEquals(respuesta.status_code, 200)
-  
+    
+    def test_guarda_Admin(self):
+        self.Administrador = Administradores.objects.create(
+            username='DanielMorales',
+            password = 'Ronaldinho999.',
+            is_active = True,
+            is_staff = True,
+            is_superuser = True
+        )
+    

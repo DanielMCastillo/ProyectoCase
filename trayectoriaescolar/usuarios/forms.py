@@ -23,13 +23,13 @@ class UserForm(forms.ModelForm):
         if len(contrasena1) < 8:
             raise forms.ValidationError('La contraseña debe contener al menos 8 caracteres')
         if contrasena1.islower():
-            raise forms.ValidationError('La contraseña debe contener al menos una mayuscula')
+            raise forms.ValidationError('La contraseña debe contener al menos una letra mayuscula')
         if not any(chr.isalpha() for chr in contrasena1):
             raise forms.ValidationError('La contraseña debe contener al menos una letra')
         if contrasena1.isupper():
-            raise forms.ValidationError('La contraseña debe contener al menos una minuscula')
+            raise forms.ValidationError('La contraseña debe contener al menos una letra minuscula')
         if contrasena1.isalnum():
-            raise forms.ValidationError('La contraseña debe llevar al menos un caracter especial')
+            raise forms.ValidationError('La contraseña debe contener al menos un caracter especial')
         if not any(chr.isdigit() for chr in contrasena1):
             raise forms.ValidationError('La contraseña debe contener al menos un número')
         if contrasena1 != contrasena2:
@@ -39,14 +39,15 @@ class UserForm(forms.ModelForm):
     
     def clean_username(self):
         usern = self.cleaned_data['username']
-        
         if len(usern) < 8:
             raise forms.ValidationError('El usuario debe contener 8 o mas caracteres')
         if ' ' in usern:
-            raise forms.ValidationError('El nombre de usuario no puede contener espacios')
+            raise forms.ValidationError('El nombre de usuario no debe contener espacios')
         if not usern.isalnum():
-            raise forms.ValidationError('No puede llevar caracteres especiales')
+            raise forms.ValidationError('El nombre de usuario no debe contener caracteres especiales')
         return usern
+
+    
     
 class FormAdmins(forms.ModelForm):
     class Meta:
