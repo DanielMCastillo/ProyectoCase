@@ -13,18 +13,18 @@
   <!-- icheck bootstrap -->
   <link rel="stylesheet" href="{% static 'plugins/icheck-bootstrap/icheck-bootstrap.min.css' %}">
   <!-- Theme style -->
-  <link rel="stylesheet" href="{% static 'dist/css/adminlte.min.css' %}">
+  <link rel="stylesheet" href="{% static 'dist/css/admincase.css' %}">
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">
   <!-- /.login-logo -->
   <div class="card card-outline card-primary">
     <div class="card-header text-center">
-      <a href="../../index2.html" class="h1"><b>AdminCASE - </b>SSTE</a>
+      <a href="../../presentacion.html" class="h1"><b>AdminCASE - </b>SSTE</a>
       <img src="{% static 'dist/img/logocase.png' %}" alt="logocase" width="200px" height = "200px">
     </div>
     <div class="card-body">
-      <p class="login-box-msg">Inicio de sesión</p>
+      <h2 class="login-box-msg">Inicio de sesión</h2>
       {% if form.errors %}
         {% comment %} {{form.errors}} {% endcomment %}
         <div class="alert alert-warning">
@@ -50,7 +50,7 @@
           <input type="text" class="form-control" placeholder="Usuario" name="username">
           <div class="input-group-append">
             <div class="input-group-text">
-              <span class="fas fa-envelope"></span>
+              <span class="fas fa-user"></span>
             </div>
           </div>
         </div>
@@ -67,6 +67,7 @@
             <button type="submit" class="btn btn-primary btn-block">Ingresar</button>
             <input type="hidden" name="next" value="{{next}}">
           </div>
+          
           <!-- /.col -->
         </div>
       </form>
@@ -75,7 +76,7 @@
         <a href="forgot-password.html">Olvidé mi contraseña</a>
       </p>
       <p class="mb-0">
-        <a href="{% url 'usuarios:registrar' %}" class="text-center">Registrar nuevo usuario</a>
+        <a href="{% url 'usuarios:registrar' %}" class="text-center">Registrar nuevo administrador</a>
       </p>
     </div>
     <!-- /.card-body -->

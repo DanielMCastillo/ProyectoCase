@@ -2,19 +2,27 @@ from django.test import TestCase
 from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
 
+from usuarios.views import RegistrarAdmin
+
 class TestViewsCase(TestCase):
     def setUp(self):
         usuario = User(
             username='amcdanymx',
             password='Ronaldinho999.',
             is_superuser=True,
-            is_active=True
+            is_active=True,
+            is_staff = True
+            
 
         )
         usuario.set_password('Ronaldinho999.')
         usuario.save()
         self.client.login(username='amcdanymx', password='Ronaldinho999')
 
+        
+    def test_bienvenida_estatus(self):
+        respuesta = self.client.get('/bienvenida' , {}, follow=True)
+        self.assertEquals(respuesta.status_code, 200)
 
     def test_registrar_estatus(self):
         respuesta = self.client.get('/registrar' , {}, follow=True)
@@ -35,4 +43,8 @@ class TestViewsCase(TestCase):
     def test_template_login(self):
         response = self.client.get('/entrar')
         self.assertTemplateUsed(response, 'login.html')
-
+    
+    def test_lista_administradores(self):
+        respuesta = self.client.get('/administradores', {}, follow=True)
+        self.assertEquals(respuesta.status_code, 200)
+  

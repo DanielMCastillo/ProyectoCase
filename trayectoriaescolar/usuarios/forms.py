@@ -5,7 +5,7 @@ class UserForm(forms.ModelForm):
     repassword = forms.CharField()
     class Meta:
         model = Administradores
-        fields = ('username','password','email','repassword')
+        fields = ('username','email','password','repassword')
 
     email = forms.EmailField(required=True)
     
@@ -33,7 +33,7 @@ class UserForm(forms.ModelForm):
         if not any(chr.isdigit() for chr in contrasena1):
             raise forms.ValidationError('La contraseña debe contener al menos un número')
         if contrasena1 != contrasena2:
-            raise forms.ValidationError('Las contraseñas son diferentes; favor de verificar')
+            raise forms.ValidationError('Las contraseñas son diferentes')
         
         return self.data['password']
     
