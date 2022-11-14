@@ -22,10 +22,10 @@ class UserForm(forms.ModelForm):
         contrasena2 = self.data['repassword']
         if len(contrasena1) < 8:
             raise forms.ValidationError('La contraseña debe contener al menos 8 caracteres')
-        if contrasena1.islower():
-            raise forms.ValidationError('La contraseña debe contener al menos una letra mayuscula')
         if not any(chr.isalpha() for chr in contrasena1):
             raise forms.ValidationError('La contraseña debe contener al menos una letra')
+        if contrasena1.islower():
+            raise forms.ValidationError('La contraseña debe contener al menos una letra mayuscula')
         if contrasena1.isupper():
             raise forms.ValidationError('La contraseña debe contener al menos una letra minuscula')
         if contrasena1.isalnum():

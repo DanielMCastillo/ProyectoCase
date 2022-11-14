@@ -166,24 +166,17 @@ class TestFormadmin(TestCase):
     def test_admin_contraseña_con_letra_minuscula(self):
         self.data['password'] = 'HOLAAAAAA'
         form = UserForm(self.data)
-        self.assertEqual(form.errors['password'], ['La contraseña debe contener al menos una letra minuscula'])
+        self.assertEqual(form.errors['password'], 
+                         ['La contraseña debe contener al menos una letra minuscula'])
 
     def test_admin_contraseña_con_minuscula(self):
         self.data['password'] = 'Juanitooo22'
         form = UserForm(self.data)
-        self.assertEqual(form.errors['password'], ['La contraseña debe contener al menos un caracter especial'])    
+        self.assertEqual(form.errors['password'], 
+                         ['La contraseña debe contener al menos un caracter especial'])    
 
     def test_admin_contraseña_con_numero(self):
         self.data['password'] = 'Juanitooo.'
         form = UserForm(self.data)
-        self.assertEqual(form.errors['password'], ['La contraseña debe contener al menos un número']) 
-    
-    def user_form_form_valid_data(self):
-        form = UserForm(data={
-            'username': 'DanielMorales',
-            'email': 'danielmoralescast@gmail.com',
-            'password': 'Ronaldinho999.',
-            'repassword': 'Ronaldinho999.'
-        })
-        self.assertTrue(form.is_valid())
-    
+        self.assertEqual(form.errors['password'], 
+                         ['La contraseña debe contener al menos un número']) 

@@ -8,8 +8,7 @@ class TestSmoke(TestCase):
     def AdministradoresTest(self):
         self.admin = Administradores.objects.create(
             username='DanielCastillo',
-            email = 'amcdanymx3@gmail.com',
-            password = 'Ronaldinho999.',
+            email='amcdanymx3@gmail.com',
+            password='Ronaldinho999.',
             repassword='Ronaldinho999.'
         )
-        
