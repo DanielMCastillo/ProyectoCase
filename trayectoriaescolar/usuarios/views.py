@@ -10,21 +10,24 @@ from django.views.generic.edit import CreateView
 
 from .forms import UserForm
 
+
 class BienvenidaView(LoginRequiredMixin, TemplateView):
     success_url = reverse_lazy('bienvenida')
     template_name = 'bienvenida.html'
+
 
 class LoginView(LoginView):
     success_url = reverse_lazy('bienvenida')
     template_name = 'login.html'
     form_class = AuthenticationForm
 
+
 class RegistrarAdmin(CreateView):
     model = User
     form_class = UserForm
     success_url = reverse_lazy('usuarios:login')
     success_message = "%(username)s se registró de manera exitosa"
-    
+
     def form_valid(self, form):
         user = form.save(commit=False)
         user.is_active = True
@@ -32,7 +35,8 @@ class RegistrarAdmin(CreateView):
         user.is_staff = True
         user.save()
         return super().form_valid(form)
-    
+
+
 def lista_admins(request):
     administradores = User.objects.all()
     return render(request, 'administradores.html', {'administradores': administradores})

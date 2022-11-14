@@ -1,6 +1,7 @@
 from django.test import TestCase
 from django.contrib.auth.models import User
 
+
 class TestViewsCase(TestCase):
     def setUp(self):
         usuario = User(
@@ -21,7 +22,7 @@ class TestViewsCase(TestCase):
     def test_registrar_estatus(self):
         respuesta = self.client.get('/registrar', {}, follow=True)
         self.assertEquals(respuesta.status_code, 200)
-        
+
     def test_bienvenida_estatus(self):
         respuesta = self.client.get('', {}, follow=True)
         self.assertEquals(respuesta.status_code, 200)
@@ -29,11 +30,11 @@ class TestViewsCase(TestCase):
     def test_adminisitradores_estatus(self):
         respuesta = self.client.get('/administradores', {}, follow=True)
         self.assertEquals(respuesta.status_code, 200)
-    
+
     def test_template_admin_nuevo(self):
         response = self.client.get('/registrar')
         self.assertTemplateUsed(response, 'auth/user_form.html')
-    
+
     def test_template_login(self):
         response = self.client.get('/entrar')
         self.assertTemplateUsed(response, 'login.html')
