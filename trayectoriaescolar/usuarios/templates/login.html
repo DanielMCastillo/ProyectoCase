@@ -1,96 +1,73 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Login CASE</title>
-  <link rel="icon" type="image/x-icon" href="{% static 'case.ico' %}">
-
-  <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="{% static 'plugins/fontawesome-free/css/all.min.css' %}">
-  <!-- icheck bootstrap -->
-  <link rel="stylesheet" href="{% static 'plugins/icheck-bootstrap/icheck-bootstrap.min.css' %}">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="{% static 'dist/css/admincase.css' %}">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Login - Brand</title>
+    <link rel="stylesheet" href="{% static 'dist/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
 </head>
-<body class="hold-transition login-page">
-<div class="login-box">
-  <!-- /.login-logo -->
-  <div class="card card-outline card-primary">
-    <div class="card-header text-center">
-      <a href="../../presentacion.html" class="h1"><b>AdminCASE - </b>SSTE</a>
-      <img src="{% static 'dist/img/logocase.png' %}" alt="logocase" width="200px" height = "200px">
-    </div>
-    <div class="card-body">
-      <h2 class="login-box-msg">Inicio de sesión</h2>
-      {% if form.errors %}
-        {% comment %} {{form.errors}} {% endcomment %}
-        <div class="alert alert-warning">
-          Verifica tus datos de acceso.
-        </div>
-      {% endif %}
-      {% if messages %}
-        {% for message in messages %}
-            {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
-                <div class="alert alert-danger">
-                    {{message}}
-                </div>
-            {% else %}
-                <div class="alert alert-success">
-                    {{message}}
-                </div>
-            {% endif %}  
-        {% endfor %}
-      {% endif %}
-      <form method="post">
-        {% csrf_token %}
-        <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Usuario" name="username">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-user"></span>
-            </div>
-          </div>
-        </div>
-        <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Contraseña" name="password">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-lock"></span>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-12">
-            <button type="submit" class="btn btn-primary btn-block">Ingresar</button>
-            <input type="hidden" name="next" value="{{next}}">
-          </div>
-          
-          <!-- /.col -->
-        </div>
-      </form>
 
-      <p class="mb-2">
-        <a href="forgot-password.html">Olvidé mi contraseña</a>
-      </p>
-      <p class="mb-0">
-        <a href="{% url 'usuarios:registrar' %}" class="text-center">Registrar nuevo administrador</a>
-      </p>
+<body class="bg-gradient-primary" style="background: rgb(231,231,231);">
+    <div class="container" style="margin-top: 150px;">
+        <div class="row justify-content-center">
+            <div class="col-md-9 col-lg-12 col-xl-10">
+                <div class="card shadow-lg o-hidden border-0 my-5">
+                    <div class="card-body p-0">
+                        <div class="row">
+                            <div class="col-lg-6 d-none d-lg-flex">
+                                <div class="flex-grow-1 bg-register-image" style="background: url(&quot;static/dist/img/dogs/case_login.jpg&quot;);"></div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="p-5">
+                                    <div class="text-center">
+                                        <h4 class="text-dark mb-4" style="font-weight: bold;font-size: 30px;color: #26344d;">Iniciar Sesión</h4>
+                                        {% if form.errors %}
+                                        {% comment %} {{form.errors}} {% endcomment %}
+                                            <div class="alert alert-warning">
+                                                Verifica tus datos de acceso.
+                                            </div>
+                                        {% endif %}
+                                        {% if messages %}
+                                            {% for message in messages %}
+                                                {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                                                    <div class="alert alert-danger">
+                                                        {{message}}
+                                                    </div>
+                                                {% else %}
+                                                    <div class="alert alert-success">
+                                                        {{message}}
+                                                    </div>
+                                                {% endif %}  
+                                            {% endfor %}
+                                        {% endif %}
+                                    </div>
+                                    <form class="user" method = "POST">
+                                        {% csrf_token %}
+                                        <div class="mb-3"><input class="form-control form-control-user" type="user" placeholder="Usuario"  id = "id_username" name="username"  placeholder="Enter Email Address..." name="email"></div>
+                                        <div class="mb-3"><input class="form-control form-control-user" type="password"  placeholder="Contraseña" id = "id_password" name="password" ></div>
+                                        <hr>
+                                        <div class="mb-3">
+                                            <div class="custom-control custom-checkbox small"></div>
+                                        </div><button class="btn btn-primary d-block btn-user w-100" type="submit" style="background: #d7a44c;color: #26344d;">Ingresar</button>
+                                        <input type="hidden" name="next" value="{{next}}">
+                                        <hr>
+                                        <hr>
+                                    </form>
+                                    <div class="text-center"><a class="small" href="forgot-password.html" style="color: #26344d;">¿Olvidaste tu contraseña?</a></div>
+                                    <div class="text-center"><a class="small" href="registro_de_administrador.html" style="color: #26344d;">Crea una cuenta</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <!-- /.card-body -->
-  </div>
-  <!-- /.card -->
-</div>
-<!-- /.login-box -->
-
-<!-- jQuery -->
-<script src="{% static 'plugins/jquery/jquery.min.js' %}"></script>
-<!-- Bootstrap 4 -->
-<script src="{% static 'plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-<!-- AdminLTE App -->
-<script src="{% static 'dist/js/adminlte.min.js' %}"></script>
+    <script src="{% static 'dist/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'dist/js/theme.js' %"></script>
 </body>
+
 </html>
