@@ -6,7 +6,8 @@ from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView
 from django.views.generic.edit import CreateView
-from .forms import UserForm
+from .forms import UserForm, AlumnoForm
+from .models import Alumnos
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, logout, authenticate
 
@@ -28,10 +29,30 @@ class RegistrarAdmin(CreateView):
     success_url = reverse_lazy('usuarios:login')
     success_message = "%(username)s se registró de manera exitosa"
 
+    def form_valid(self, form):
+        user = form.save(commit=False)
+        user.is_active = True
+        user.is_superuser = True
+        user.is_staff = True
+        user.save()
 
 def lista_admins(request):
     administradores = User.objects.all()
     return render(request, 'administradores.html', {'administradores': administradores})
+
+class RegistrarAlumno(CreateView):
+    model = Alumnos
+    form_class = AlumnoForm
+    template_name = 'registro_alumno.html'
+    success_url = reverse_lazy('usuarios:bienvenida')
+    success_message = "%(username)s se registró de manera exitosa"
+
+    def form_valid(self, form):
+        user = form.save(commit=False)
+        user.is_active = True
+        user.is_superuser = False
+        user.is_staff = False
+        user.save()
 
 
 

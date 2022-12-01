@@ -11,6 +11,7 @@ urlpatterns = [
     path('administradores', views.lista_admins, name='administradores'),
     path('salir', LogoutView.as_view(), name='logout'),
     path('registro_de_administrador', views.RegistrarAdmin.as_view(), name='registro_de_administrador'),
+    path('registro_alumno', views.RegistrarAlumno.as_view(), name='registro_alumno'),
     
 
 ]
