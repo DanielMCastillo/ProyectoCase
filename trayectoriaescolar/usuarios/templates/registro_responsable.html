@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,9 +6,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Profile - Brand</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
-    <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="{% static 'assets/fonts/fontawesome-all.min.css' %}">
 </head>
 
 <body id="page-top">
@@ -193,14 +194,19 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="card shadow mb-3">
-                                        <div class="card-header py-3">
-                                            <p class="text-primary m-0 fw-bold" style="color: #26344d;--bs-primary: #26344d;--bs-primary-rgb: 38,52,77;--bs-secondary: #fac017;--bs-secondary-rgb: 250,192,23;">Datos de Resposable</p>
+                                        <div class="text-center">
+                                            <h4 class="text-dark mb-4" style="font-size: 33px;font-weight: bold;">Datos del responsable</h4>
+                                            {% if form.errors %}
+                                                <div class="alert alert-warning">
+                                                    {{form.errors}}
+                                                </div>
+                                            {% endif %}
                                         </div>
                                         <div class="card-body">
                                             <form>
                                                 <div class="row">
                                                     <div class="col">
-                                                        <div class="mb-3"><label class="form-label" for="username"><strong>Usuario</strong></label><input class="form-control" type="text" id="username" placeholder="user.name" name="username"></div>
+                                                        <div class="mb-3"><label class="form-label" for="username"><strong>Usuario</strong></label><input class="form-control" type="text" id="username" placeholder="username" name="username" value="{% if form.username.value %}{{form.username.value}}{% endif %}"></div>
                                                     </div>
                                                     <div class="col">
                                                         <div class="mb-3"><label class="form-label" for="email"><strong>Correo electrónico</strong></label><input class="form-control" type="email" id="email" placeholder="user@example.com" name="email"></div>
@@ -208,16 +214,18 @@
                                                 </div>
                                                 <div class="row">
                                                     <div class="col">
-                                                        <div class="mb-3"><label class="form-label" for="first_name"><strong>Nombre</strong></label><input class="form-control" type="text" id="first_name" placeholder="John" name="first_name"></div>
-                                                        <div class="mb-3"><label class="form-label" for="first_name"><strong>Primer Apellido</strong></label><input class="form-control" type="text" id="first_name-2" placeholder="John" name="first_name"></div>
-                                                        <div class="mb-3"><label class="form-label" for="last_name"><strong>Programa Académico</strong></label><input class="form-control" type="text" id="last_name-3" placeholder="Doe" name="last_name"></div>
+                                                        <div class="mb-3"><label class="form-label" for="first_name"><strong>Nombre</strong></label><input class="form-control" type="text" id="nombre" placeholder="John" name="nombre"></div>
+                                                        <div class="mb-3"><label class="form-label" for="first_name"><strong>Primer Apellido</strong></label><input class="form-control" type="text" id="apellidoP" placeholder="John" name="apellidoP"></div>
+                                                        <div class="mb-3"><label class="form-label" for="last_name"><strong>Programa Académico</strong></label><input class="form-control" type="text" id="programa_academico" placeholder="Doe" name="programa_academico"></div>
                                                     </div>
                                                     <div class="col">
-                                                        <div class="mb-3"><label class="form-label" for="last_name"><strong>Segundo nombre</strong></label><input class="form-control" type="text" id="last_name" placeholder="Doe" name="last_name"></div>
-                                                        <div class="mb-3"><label class="form-label" for="last_name"><strong>Segundo Apellido</strong></label><input class="form-control" type="text" id="last_name-2" placeholder="Doe" name="last_name"></div>
-                                                        <div class="mb-3"><label class="form-label" for="last_name"><strong>Unidad Académica</strong></label><input class="form-control" type="text" id="last_name-1" placeholder="Doe" name="last_name"></div>
+                                                        <div class="mb-3"><label class="form-label" for="last_name"><strong>Segundo nombre</strong></label><input class="form-control" type="text" id="nombre2" placeholder="Doe" name="nombre2"></div>
+                                                        <div class="mb-3"><label class="form-label" for="last_name"><strong>Segundo Apellido</strong></label><input class="form-control" type="text" id="apellidoM" placeholder="Doe" name="apellidoM"></div>
+                                                        <div class="mb-3"><label class="form-label" for="last_name"><strong>Unidad Académica</strong></label><input class="form-control" type="text" id="unidad_academica" placeholder="Doe" name="unidad_academica"></div>
                                                     </div>
                                                 </div>
+                                                <hr><button class="btn btn-primary d-block btn-user w-100" type="submit" style="background: #d7a44c;">Guardar Responsable</button>
+                                                <hr>
                                             </form>
                                         </div>
                                     </div>
@@ -235,8 +243,8 @@
             </footer>
         </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
     </div>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/js/theme.js"></script>
+    <script src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'assets/js/theme.js"></script' %}>
 </body>
 
 </html>

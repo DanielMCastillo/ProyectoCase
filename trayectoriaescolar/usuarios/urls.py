@@ -12,6 +12,8 @@ urlpatterns = [
     path('salir', LogoutView.as_view(), name='logout'),
     path('registro_de_administrador', views.RegistrarAdmin.as_view(), name='registro_de_administrador'),
     path('registro_alumno', views.RegistrarAlumno.as_view(), name='registro_alumno'),
+    path('home_case', views.home, name='home'),
+    path('registro_responsable', views.RegistrarResponsable.as_view(), name='registro_responsable'),
     
 
 ]
