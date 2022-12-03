@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Registrar admin - SSTE</title>
+    <link rel="stylesheet" href="{% static 'dist/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
+</head>
+
+<body class="bg-gradient-primary" style="background: rgb(231,231,231);">
+    <div class="container" style="margin-top: 120px;">
+        <div class="card shadow-lg o-hidden border-0 my-5">
+            <div class="card-body p-0">
+                <div class="row">
+                    <div class="col-lg-5 d-none d-lg-flex">
+                        <div class="flex-grow-1 bg-register-image" style="background-image: url(&quot;static/dist/img/dogs/case_portada.jpg&quot;);"></div>
+                    </div>
+                    <div class="col-lg-7">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h4 class="text-dark mb-4" style="font-size: 39px;text-align: left;border-width: 1px;">Registrar nuevo adminstrador</h4>
+                            </div>
+                            <form class="user">
+                                <div class="row mb-3">
+                                    <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" id="exampleFirstName" placeholder="Nombre de usuario" name="first_name" style="width: 531px;border-radius: 9px;text-align: left;display: inline;border-color: rgb(133,135,150);"></div>
+                                </div>
+                                <div class="mb-3"><input class="form-control form-control-user" type="email" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Email Address" name="email" style="width: 531px;border-radius: 9px;text-align: left;display: inline;border-color: rgb(133,135,150);"></div>
+                                <div class="row mb-3">
+                                    <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="password" id="examplePasswordInput" placeholder="Password" name="password" style="border-radius: 9px;width: 531px;text-align: left;display: inline;border-color: rgb(133,135,150);"></div>
+                                </div><input class="form-control form-control-user" type="password" id="exampleRepeatPasswordInput" placeholder="Repeat Password" name="password_repeat" style="border-radius: 9px;width: 531px;margin-bottom: 30px;text-align: left;display: inline;border-color: rgb(133,135,150);"><button class="btn btn-primary" type="button" style="width: 531px;min-height: 50px;">Registrar</button>
+                                <hr>
+                            </form>
+                            <div class="text-center"></div>
+                            <div class="text-center"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'dist/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'dist/js/theme.js' %"></script>
+</body>
+
+</html>
