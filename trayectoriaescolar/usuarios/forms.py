@@ -72,8 +72,8 @@ class AlumnoForm(forms.ModelForm):
     repassword = forms.CharField()
     class Meta:
         model = Alumnos
-        fields = ('username', 'correo', 'nombre', 'nombre2', 'apellidoP', 'apellidoM', 'telefono', 'password', 'repassword')
-    correo = forms.EmailField(required=True)
+        fields = ('username', 'email', 'nombre', 'nombre2', 'apellidoP', 'apellidoM', 'telefono', 'password', 'repassword')
+    email = forms.EmailField(required=True)
     
     def save(self, commit=True):
         user = super(AlumnoForm, self).save(commit=False)
@@ -161,7 +161,7 @@ class FormAlumnos(forms.ModelForm):
         fields = '__all__'
         widgets = {
             'matricula': forms.TextInput(attrs={'class': 'form-control'}),
-            'correo': forms.TextInput(attrs={'class': 'form-control'}),
+            'email': forms.TextInput(attrs={'class': 'form-control'}),
             'nombre': forms.TextInput(attrs={'class': 'form-control'}),
             'nombre2': forms.TextInput(attrs={'class': 'form-control'}),
             'apellidoP': forms.TextInput(attrs={'class': 'form-control'}),
@@ -174,13 +174,14 @@ class ResponsableForm(forms.ModelForm):
 
     class Meta:
         model = Responsables
-        fields = ('username', 'correo', 'nombre', 'nombre2', 'apellidoP', 'apellidoM', 'programa_academico', 'unidad_academica', 'password', 'repassword')
+        fields = ('username', 'email', 'nombre', 'nombre2', 'apellidoP', 'apellidoM', 'programa_academico', 'unidad_academica', 'password', 'repassword')
 
-    correo = forms.EmailField(required=True)
+    email = forms.EmailField(required=True)
 
     def save(self, commit=True):
-        user = super(UserForm, self).save(commit=False)
+        user = super(ResponsableForm, self).save(commit=False)
         user.set_password(self.cleaned_data['password'])
+        
         if commit:
             user.save()
         return user
@@ -230,7 +231,7 @@ class FormResponsables(forms.ModelForm):
         fields = '__all__'
         widgets = {
             'matricula': forms.TextInput(attrs={'class': 'form-control'}),
-            'correo': forms.TextInput(attrs={'class': 'form-control'}),
+            'email': forms.TextInput(attrs={'class': 'form-control'}),
             'nombre': forms.TextInput(attrs={'class': 'form-control'}),
             'nombre2': forms.TextInput(attrs={'class': 'form-control'}),
             'apellidoP': forms.TextInput(attrs={'class': 'form-control'}),

@@ -60,8 +60,13 @@ class RegistrarAdmin(CreateView):
 
 @login_required   
 def lista_admins(request):
-    administradores = User.objects.all()
+    administradores = User.objects.filter(is_superuser=True)
     return render(request, 'administradores.html', {'administradores': administradores})
+
+@login_required
+def lista_alumnos(request):
+    alumnos = User.objects.filter(is_superuser=False, is_staff=False)
+    return render(request, 'alumnos.html', {'alumnos': alumnos})
 
 class RegistrarAlumno(CreateView):
     model = Alumnos
@@ -83,7 +88,7 @@ class RegistrarAlumno(CreateView):
 class RegistrarResponsable(CreateView):
     model = Responsables
     form_class = ResponsableForm
-    template_name = 'registro_responsable_1.html'
+    template_name = 'registro_responsable.html'
     success_url = reverse_lazy('usuarios:home')
     #success_message = "%(matricula)s se registró de manera exitosa"
 
@@ -93,6 +98,9 @@ class RegistrarResponsable(CreateView):
         user.is_superuser = False
         user.is_staff = True
         user.save()
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse_lazy('usuarios:home'))
 
 # Función para cerrar sesión.
 @login_required

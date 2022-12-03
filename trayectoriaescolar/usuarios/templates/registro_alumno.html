@@ -36,7 +36,7 @@
                                 <div><a class="btn btn-link nav-link" data-bs-toggle="collapse" aria-expanded="true" aria-controls="collapse-1" href="#collapse-1" role="button"><i class="fas fa-users"></i>&nbsp;<span>Registros</span></a>
                                     <div class="collapse show" id="collapse-1">
                                         <div class="bg-white border rounded py-2 collapse-inner">
-                                            <h6 class="collapse-header">Registrar</h6><a class="collapse-item" href="buttons.html"><i class="fas fa-user-lock"></i>Administradores</a><a class="collapse-item" href="cards.html"><i class="fas fa-user-tie"></i>Responsables</a><a class="collapse-item" href="cards.html"><i class="fas fa-user-graduate"></i>Alumnos</a>
+                                            <h6 class="collapse-header">Registrar</h6><a class="collapse-item" href="{% url 'usuarios:registro_de_administrador'%}"><i class="fas fa-user-lock"></i>Administradores</a><a class="collapse-item" href="{% url 'usuarios:registro_responsable'%}"><i class="fas fa-user-tie"></i>Responsables</a><a class="collapse-item" href="{% url 'usuarios:registro_alumno'%}"><i class="fas fa-user-graduate"></i>Alumnos</a>
                                         </div>
                                     </div>
                                 </div>
@@ -220,7 +220,7 @@
                                                     <div class="col">
                                                         <div class="mb-3"><label class="form-label" for="first_name"><strong>Nombre</strong></label><input class="form-control" type="text" id="nombre" placeholder="NombreAlumno" name="nombre"></div>
                                                         <div class="mb-3"><label class="form-label" for="first_name"><strong>Primer Apellido</strong></label><input class="form-control" type="text" id="primer_apellido" placeholder="Primer apellido" name="apellidoP"></div>
-                                                        <div class="mb-3"><label class="form-label" for="email"><strong>Correo electrónico</strong></label><input class="form-control" type="text" id="correo" placeholder="user@example.com" name="correo"></div>
+                                                        <div class="mb-3"><label class="form-label" for="email"><strong>Correo electrónico</strong></label><input class="form-control" type="text" id="correo" placeholder="user@example.com" name="email"></div>
                                                         <div class="mb-3"><label class="form-label" for="email"><strong>Contraseña</strong></label><input class="form-control" type="password" id="examplePasswordInput" placeholder="Contraseña" name="password"></div>
                                                         
                                                     </div>
@@ -228,7 +228,7 @@
                                                         <div class="mb-3"><label class="form-label" for="last_name"><strong>Segundo nombre</strong></label><input class="form-control" type="text" id="segundo_nombre" placeholder="Opcional" name="nombre2"></div>
                                                         <div class="mb-3"><label class="form-label" for="last_name"><strong>Segundo Apellido</strong></label><input class="form-control" type="text" id="segundo_apellido" placeholder="Segundo apellido" name="apellidoM"></div>
                                                         <div class="mb-3"><label class="form-label" for="last_name"><strong>Número de télefono</strong></label><input class="form-control" type="text" id="telefono" placeholder="492..." name="telefono"></div>
-                                                        <div class="mb-3"><label class="form-label" for="last_name"><strong>Confirmar contraseña</strong></label><input class="form-control" type="password" id="exampleRepeatPasswordInput" placeholder="Repetir contraseña" name="repassword"></div>
+                                                        <div class="mb-3"><label class="form-label" for="last_name"><strong>Confirmar contraseña</strong></label><input class="form-control" type="password" id="exampleRepeatPasswordInput" placeholder="Confirmar contraseña" name="repassword"></div>
                                                     
                                                     </div>
                                                 </div>

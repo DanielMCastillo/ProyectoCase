@@ -6,7 +6,6 @@ class Administradores(User):
     correo = models.CharField(max_length=70)
     
 class Responsables(User):
-    correo = models.CharField(max_length=70)
     nombre = models.TextField(max_length=50, null=False)
     nombre2 = models.TextField(max_length=50, null=True, blank=True)
     apellidoP = models.TextField(max_length=50)
@@ -15,7 +14,6 @@ class Responsables(User):
     unidad_academica = models.TextField(max_length=50, null=False)
 
 class Alumnos(User):
-    correo = models.CharField(max_length=70)
     nombre = models.TextField(max_length=50, null=False)
     nombre2 = models.TextField(max_length=50, null=True, blank=True)
     apellidoP = models.TextField(max_length=50)
