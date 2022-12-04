@@ -11,6 +11,7 @@ from .forms import UserForm, AlumnoForm, ResponsableForm
 from .models import Alumnos, Responsables
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, logout, authenticate
+from tkinter import messagebox as MessageBox
 
 
 class BienvenidaView(LoginRequiredMixin, TemplateView):
@@ -30,24 +31,37 @@ class LoginViewAlumno(LoginView):
     
 @login_required
 def home(request):
-    return render(request, 'home_case.html')
+    if request.user.is_staff:
+        return render(request, 'home_case.html')
+    else:
+        return redirect('usuarios:home_alumno')
 
 
 @login_required
 def homeAlumno(request):
-    return render(request, 'index_alumno.html')
+    if request.user.is_superuser == False and request.user.is_staff == False:
+        return render(request, 'index_alumno.html')
+    else:
+        return redirect('usuarios:home')
 
 
 
 def error404(request):
     return render(request, '404.html')
 
-class RegistrarAdmin(CreateView):
+class RegistrarAdmin(LoginRequiredMixin, CreateView):
     model = User
     form_class = UserForm
     template_name = 'registro_de_administrador.html'
     success_url = reverse_lazy('usuarios:login')
     success_message = "%(username)s se registró de manera exitosa"
+    
+    #def permiso(self):
+    #    if not self.request.user.is_superuser:
+    #        if self.request.user.is_staff:
+    #            return redirect('usuarios:home')
+    #        else:
+    #            return redirect('usuarios:home_alumno')
 
     def form_valid(self, form):
         user = form.save(commit=False)
@@ -61,31 +75,40 @@ class RegistrarAdmin(CreateView):
 
 @login_required   
 def lista_admins(request):
-    administradores = User.objects.filter(is_superuser=True)
-    return render(request, 'administradores.html', {'administradores': administradores})
+    if request.user.is_superuser:
+        administradores = User.objects.filter(is_superuser=True)
+        return render(request, 'administradores.html', {'administradores': administradores})
+    else:
+        if request.user.is_staff:
+            return redirect('usuarios:home')
+        else:
+            return redirect('usuarios:home_alumno')
 
 @login_required
 def lista_alumnos(request):
-    #user = User.objects.filter(is_superuser=False, is_staff=False)
+    if not request.user.is_staff:
+        return redirect('usuarios:home_alumno')
     user_alumno = Alumnos.objects.all()
-    
     return render(request, 'alumnos.html', {'alumnos': user_alumno})
 
 
 
 @login_required
 def lista_responsables(request):
-    #user = User.objects.filter(is_superuser=False, is_staff=False)
-    user_responsable = Responsables.objects.all()
-    
-    return render(request, 'responsables.html', {'responsables': user_responsable})
+    if request.user.is_superuser:
+        user_responsable = Responsables.objects.all()
+        return render(request, 'responsables.html', {'responsables': user_responsable})
+    else:
+        if request.user.is_staff:
+            return redirect('usuarios:home')
+        else:
+            return redirect('usuarios_home_alumno')
 
-class RegistrarAlumno(CreateView):
+class RegistrarAlumno(LoginRequiredMixin, CreateView):
     model = Alumnos
     form_class = AlumnoForm
     template_name = 'registro_alumno.html'
     success_url = reverse_lazy('usuarios:home')
-    #success_message = "%(matricula)s se registró de manera exitosa"
 
     def form_valid(self, form):
         user = form.save(commit=False)
@@ -97,12 +120,11 @@ class RegistrarAlumno(CreateView):
             form.save()
             return HttpResponseRedirect(reverse_lazy('usuarios:home'))
 
-class RegistrarResponsable(CreateView):
+class RegistrarResponsable(LoginRequiredMixin, CreateView):
     model = Responsables
     form_class = ResponsableForm
     template_name = 'registro_responsable.html'
     success_url = reverse_lazy('usuarios:home')
-    #success_message = "%(matricula)s se registró de manera exitosa"
 
     def form_valid(self, form):
         user = form.save(commit=False)
@@ -113,9 +135,3 @@ class RegistrarResponsable(CreateView):
         if form.is_valid():
             form.save()
             return HttpResponseRedirect(reverse_lazy('usuarios:home'))
-
-# Función para cerrar sesión.
-@login_required
-def signout(request):
-    logout(request)
-    return redirect('login.html')
