@@ -65,8 +65,10 @@ def lista_admins(request):
 
 @login_required
 def lista_alumnos(request):
-    alumnos = User.objects.filter(is_superuser=False, is_staff=False)
-    return render(request, 'alumnos.html', {'alumnos': alumnos})
+    #user = User.objects.filter(is_superuser=False, is_staff=False)
+    user_alumno = Alumnos.objects.filter(user_ptr_id__in = User.objects.filter(is_superuser=False, is_staff=False).values('id'))
+    
+    return render(request, 'alumnos.html', {'alumnos': user_alumno})
 
 class RegistrarAlumno(CreateView):
     model = Alumnos

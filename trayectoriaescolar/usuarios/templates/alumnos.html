@@ -7,8 +7,10 @@
     <table class="table">
         <thead>
             <tr>
-                <th>matricula</th>
-                <th>correo</th>
+                <th>Matricula</th>
+                <th>Correo</th>
+                <th>Nombre</th>
+                <th>Primer apellido</th>
             </tr>
         </thead>
         <tbody>
@@ -16,6 +18,8 @@
                 <tr>
                     <td>{{alumno.username}}</td>
                     <td>{{alumno.email}}</td>
+                    <td>{{alumno.nombre}}</td>
+                    <td>{{alumno.apellidoP}}</td>
                 </tr>
             {% empty %}
                 <tr>
