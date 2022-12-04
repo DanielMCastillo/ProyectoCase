@@ -66,7 +66,7 @@ def lista_admins(request):
 @login_required
 def lista_alumnos(request):
     #user = User.objects.filter(is_superuser=False, is_staff=False)
-    user_alumno = Alumnos.objects.filter(user_ptr_id__in = User.objects.filter(is_superuser=False, is_staff=False).values('id'))
+    user_alumno = Alumnos.objects.all()
     
     return render(request, 'alumnos.html', {'alumnos': user_alumno})
 
