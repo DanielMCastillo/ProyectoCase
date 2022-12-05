@@ -50,6 +50,7 @@ def error404(request):
     return render(request, '404.html')
 
 class RegistrarAdmin(LoginRequiredMixin, CreateView):
+    _PERMISSIONS = ['is_superuser']
     model = User
     form_class = UserForm
     template_name = 'registro_de_administrador.html'
@@ -105,6 +106,7 @@ def lista_responsables(request):
             return redirect('usuarios_home_alumno')
 
 class RegistrarAlumno(LoginRequiredMixin, CreateView):
+    _PERMISSIONS = ['is_superuser', 'is_staff']
     model = Alumnos
     form_class = AlumnoForm
     template_name = 'registro_alumno.html'
