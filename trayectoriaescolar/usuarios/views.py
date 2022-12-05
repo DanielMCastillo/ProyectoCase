@@ -50,19 +50,11 @@ def error404(request):
     return render(request, '404.html')
 
 class RegistrarAdmin(LoginRequiredMixin, CreateView):
-    _PERMISSIONS = ['is_superuser']
     model = User
     form_class = UserForm
     template_name = 'registro_de_administrador.html'
     success_url = reverse_lazy('usuarios:login')
     success_message = "%(username)s se registró de manera exitosa"
-    
-    #def permiso(self):
-    #    if not self.request.user.is_superuser:
-    #        if self.request.user.is_staff:
-    #            return redirect('usuarios:home')
-    #        else:
-    #            return redirect('usuarios:home_alumno')
 
     def form_valid(self, form):
         user = form.save(commit=False)
@@ -103,7 +95,7 @@ def lista_responsables(request):
         if request.user.is_staff:
             return redirect('usuarios:home')
         else:
-            return redirect('usuarios_home_alumno')
+            return redirect('usuarios:home_alumno')
 
 class RegistrarAlumno(LoginRequiredMixin, CreateView):
     _PERMISSIONS = ['is_superuser', 'is_staff']

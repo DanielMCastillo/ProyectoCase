@@ -94,22 +94,6 @@ class AlumnoForm(forms.ModelForm):
             )
         return matric
     
-    def clean_nombre(self):
-        nom = self.cleaned_data['nombre']
-        if nom == '' or nom == ' ':
-            raise forms.ValidationError(
-                'El nombre no puede estar vacío'
-            )
-        return nom
-            
-    def clean_apellidoP(self):
-        apep = self.cleaned_data['apellidoP']
-        if apep == '' or apep == ' ':
-            raise forms.ValidationError(
-                'El primer apellido no puede estar vacío'
-            )
-        return apep
-    
     def clean_password(self, *args, **kwargs):
         contrasena1 = self.data['password']
         contrasena2 = self.data['repassword']
