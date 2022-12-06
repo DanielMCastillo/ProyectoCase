@@ -124,12 +124,12 @@ class AlumnoForm(forms.ModelForm):
 
     def clean_telefono(self):
         tel = self.cleaned_data['telefono']
-        if not tel:
+        if tel != None:
             if not self.esNumero(tel):
                 raise forms.ValidationError(
                     'El telefono debe ser un número'
                 )
-            if len(tel) != 10:
+            elif len(tel) != 10:
                 raise forms.ValidationError(
                     'El telefono debe ser un número de 10 dígitos'
                 )
@@ -138,7 +138,7 @@ class AlumnoForm(forms.ModelForm):
         try:
             int(num)
             return True
-        except ValueError:
+        except:
             return False
 
 

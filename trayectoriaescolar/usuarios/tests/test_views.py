@@ -210,6 +210,30 @@ class TestViewsCase(TestCase):
         self.logearseAlumno()
         response = self.client.get('/responsables', {}, follow=True)
         self.assertTemplateNotUsed(response, 'responsables.html')
+        
+    def test_template_home_cuenta_alumno(self):
+        self.deslogearse()
+        self.logearseAlumno()
+        response = self.client.get('/home', {}, follow=True)
+        self.assertTemplateNotUsed(response, 'home_case.html')
+        
+    def test_template_home_alumno_cuenta_admin(self):
+        self.deslogearse()
+        self.logearseAdmin()
+        response = self.client.get('/home_alumno', {}, follow=True)
+        self.assertTemplateNotUsed(response, 'home_alumno.html')
+        
+    def test_template_logout(self):
+        self.deslogearse()
+        self.logearseAdmin()
+        response = self.client.get('/logout', {}, follow=True)
+        self.assertTemplateUsed(response, 'login.html')
+        
+    def test_template_logout_alumno(self):
+        self.deslogearse()
+        self.logearseAlumno()
+        response = self.client.get('/logout', {}, follow=True)
+        self.assertTemplateUsed(response, 'login_alumno.html')
 
     def deslogearse(self):
         self.client.logout()

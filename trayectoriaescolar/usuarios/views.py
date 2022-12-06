@@ -40,7 +40,7 @@ def home(request):
 
 @login_required
 def homeAlumno(request):
-    if not request.user.is_superuser and request.user.is_staff:
+    if not request.user.is_superuser and not request.user.is_staff:
         return render(request, 'index_alumno.html')
     else:
         return redirect('usuarios:home')
@@ -100,10 +100,11 @@ def lista_admins(request):
 
 @login_required
 def lista_alumnos(request):
-    if not request.user.is_staff:
-        return redirect('usuarios:home_alumno')
-    user_alumno = Alumnos.objects.all()
-    return render(request, 'alumnos.html', {'alumnos': user_alumno})
+    if request.user.is_staff:
+        user_alumno = Alumnos.objects.all()
+        return render(request, 'alumnos.html', {'alumnos': user_alumno})
+    return redirect('usuarios:home_alumno')
+    
 
 
 @login_required
@@ -156,13 +157,9 @@ class RegistrarResponsable(LoginRequiredMixin, CreateView):
 
 @login_required
 def signout(request):
-    logout(request)
-    return redirect('usuarios:login')
-
-# Función para cerrar sesión/SI SE OCUPA NO BORRAR
-
-
-@login_required
-def signoutAlumno(request):
-    logout(request)
-    return redirect('usuarios:login_alumno')
+    if request.user.is_staff:
+        logout(request)
+        return redirect('usuarios:login')
+    else:
+        logout(request)
+        return redirect('usuarios:login_alumno')

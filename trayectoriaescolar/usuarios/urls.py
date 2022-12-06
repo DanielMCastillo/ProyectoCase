@@ -24,6 +24,4 @@ urlpatterns = [
          name='registro_responsable'),
     path('error404', views.error404, name='error404'),
     path('logout', views.signout, name='logout'),
-    path('logout_alumno', views.signoutAlumno, name='logout_alumno'),
-
 ]
