@@ -58,13 +58,6 @@ class RegistrarAdmin(LoginRequiredMixin, CreateView):
     success_url = reverse_lazy('usuarios:login')
     success_message = "%(username)s se registró de manera exitosa"
 
-    # def permiso(self):
-    #    if not self.request.user.is_superuser:
-    #        if self.request.user.is_staff:
-    #            return redirect('usuarios:home')
-    #        else:
-    #            return redirect('usuarios:home_alumno')
-
     def form_valid(self, form):
         user = form.save(commit=False)
         user.is_active = True
@@ -123,7 +116,7 @@ def lista_responsables(request):
         if request.user.is_staff:
             return redirect('usuarios:home')
         else:
-            return redirect('usuarios_home_alumno')
+            return redirect('usuarios:home_alumno')
 
 
 class RegistrarAlumno(LoginRequiredMixin, CreateView):

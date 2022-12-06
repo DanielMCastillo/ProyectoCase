@@ -56,11 +56,11 @@ class TestViewsCase(TestCase):
         # self.test_guarda_Alumno()
 
     def test_login_staff_estatus(self):
-        respuesta = self.client.get('/login', {}, follow=True)
+        respuesta = self.client.get('/login/', {}, follow=True)
         self.assertEquals(respuesta.status_code, 200)
 
     def test_template_login_staff(self):
-        response = self.client.get('/login')
+        response = self.client.get('/login/')
         self.assertTemplateUsed(response, 'login.html')
 
     def test_login_alumno_status(self):
@@ -147,7 +147,7 @@ class TestViewsCase(TestCase):
     def test_home_staff_status(self):
         self.deslogearse()
         self.logearseAdmin()
-        respuesta = self.client.get('/home_case', {}, follow=True)
+        respuesta = self.client.get('/home', {}, follow=True)
         self.assertEquals(respuesta.status_code, 200)
 
     def test_home_alumno_status(self):
@@ -159,7 +159,7 @@ class TestViewsCase(TestCase):
     def test_template_home_staff(self):
         self.deslogearse()
         self.logearseAdmin()
-        response = self.client.get('/home_case', {}, follow=True)
+        response = self.client.get('/home', {}, follow=True)
         self.assertTemplateUsed(response, 'home_case.html')
 
     def test_template_home_alumno(self):
@@ -185,7 +185,7 @@ class TestViewsCase(TestCase):
     def test_template_home_staff(self):
         self.deslogearse()
         self.logearseAlumno()
-        respuesta = self.client.get('/home_case', {}, follow=True)
+        respuesta = self.client.get('/home', {}, follow=True)
         self.assertTemplateNotUsed(respuesta, 'home_case.html')
 
     def test_template_home_alumno(self):

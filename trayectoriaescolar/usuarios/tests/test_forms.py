@@ -381,6 +381,29 @@ class TestFormResponsable(TestCase):
         form = ResponsableForm(self.data)
         self.assertEqual(form.errors['password'], [
                          'La contraseña debe contener al menos un número'])
+    
+    def test_apellido_requerido(self):
+        self.data['apellidoP'] = ''
+        form = ResponsableForm(self.data)
+        self.assertEqual(form.errors['apellidoP'], [
+                         'Este campo es obligatorio.'])
+        
+    def test_apellido_no_requerido(self):
+        self.data['apellidoM'] = ''
+        form = ResponsableForm(self.data)
+        self.assertTrue(form.is_valid())
+        
+    def test_unidad_academica_requerido(self):
+        self.data['unidad_academica'] = ''
+        form = ResponsableForm(self.data)
+        self.assertEqual(form.errors['unidad_academica'], [
+                         'Este campo es obligatorio.'])
+        
+    def test_programa_academico_requerido(self):
+        self.data['programa_academico'] = ''
+        form = ResponsableForm(self.data)
+        self.assertEqual(form.errors['programa_academico'], [
+                         'Este campo es obligatorio.'])
 
     def user_form_form_valid_data(self):
         form = ResponsableForm(data={
