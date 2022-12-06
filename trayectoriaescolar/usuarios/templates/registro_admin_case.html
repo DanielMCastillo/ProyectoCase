@@ -1,0 +1,188 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Profile - Brand</title>
+    <link rel="stylesheet" href="{% static 'dist/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
+    <link rel="stylesheet" href="{% static 'dist/fonts/fontawesome-all.min.css' %}">
+</head>
+
+<body id="page-top">
+    <div id="wrapper">
+        <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0" style="background: #26344d;">
+            <div class="container-fluid d-flex flex-column p-0">
+                <hr class="sidebar-divider my-0">
+                <ul class="navbar-nav text-light" id="accordionSidebar"></ul>
+                <div class="text-center d-none d-md-inline"></div>
+                <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0" style="background: #26344d;">
+                    <div class="container-fluid d-flex flex-column p-0"><a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#"><img style="background: url(&quot;static/dist/img/dogs/trayectoriaescolar.pngs&quot;);position: absolute;margin-top: 1cm;" src="static/dist/img/dogs/trayectoriaescolar.png" width="130" height="130">                            <div class="sidebar-brand-icon rotate-n-15"></div>
+                            <div class="sidebar-brand-text mx-3"></div>
+                        </a>
+                        <hr class="sidebar-divider my-0">
+                        <ul class="navbar-nav text-light" id="accordionSidebar-1">
+                            <li class="nav-item"><a class="nav-link" href="home_case" style="margin-top: 2cm;"><i class="fas fa-home"></i><span>&nbsp;Inicio</span></a></li>
+                            <hr class="sidebar-divider">
+                            <div class="sidebar-heading">
+                                <p class="mb-0">Administrar</p>
+                            </div>
+                            <li class="nav-item">
+                                <div><a class="btn btn-link nav-link" data-bs-toggle="collapse" aria-expanded="true" aria-controls="collapse-1" href="#collapse-1" role="button"><i class="fas fa-users"></i>&nbsp;<span>Registros</span></a>
+                                    <div class="collapse show" id="collapse-1">
+                                        <div class="bg-white border rounded py-2 collapse-inner">
+                                            <h6 class="collapse-header">Registrar</h6><a class="collapse-item" href="{% url 'usuarios:registro_admin_case'%}"><i class="fas fa-user-lock"></i>Administradores</a><a class="collapse-item" href="{% url 'usuarios:registro_responsable'%}"><i class="fas fa-user-tie"></i>Responsables</a><a class="collapse-item" href="{% url 'usuarios:registro_alumno'%}"><i class="fas fa-user-graduate"></i>Alumnos</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <div><a class="btn btn-link nav-link" data-bs-toggle="collapse" aria-expanded="true" aria-controls="collapse-2" href="#collapse-2" role="button"><i class="fas fa-user-friends"></i>&nbsp;<span>Usuarios</span></a>
+                                    <div class="collapse show" id="collapse-2">
+                                        <div class="bg-white border rounded py-2 collapse-inner">
+                                            <h6 class="collapse-header">Listar</h6><a class="collapse-item" href="administradores"><i class="fas fa-user-lock"></i>Administradores</a><a class="collapse-item" href="responsables"><i class="fas fa-user-tie"></i>Responsables</a><a class="collapse-item" href="alumnos"><i class="fas fa-user-graduate"></i>Alumnos</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div><a class="btn btn-link nav-link" data-bs-toggle="collapse" aria-expanded="false" aria-controls="collapse-4" href="#collapse-4" role="button"><i class="fas fa-file-alt"></i>&nbsp;<span>Crear encuesta</span></a>
+                                    <div class="collapse" id="collapse-4">
+                                        <div class="bg-white border rounded py-2 collapse-inner"><a class="collapse-item" href="utilities-color.html">Encuesta de seguimiento</a><a class="collapse-item" href="utilities-border.html">Encuesta2</a><a class="collapse-item" href="utilities-animation.html">Encuesta3</a><a class="collapse-item" href="utilities-other.html">Encuesta3</a></div>
+                                    </div>
+                                </div>
+                            </li>
+                            <hr class="sidebar-divider">
+                            <div class="sidebar-heading">
+                                <p class="mb-0">Otros</p>
+                            </div>
+                            <li class="nav-item">
+                                <div><a class="btn btn-link nav-link" data-bs-toggle="collapse" aria-expanded="false" aria-controls="collapse-3" href="#collapse-3" role="button"><i class="fas fa-folder"></i>&nbsp;<span>Generar</span></a>
+                                    <div class="collapse" id="collapse-3">
+                                        <div class="bg-white border rounded py-2 collapse-inner">
+                                            <h6 class="collapse-header">LOGIN SCREENS:</h6><a class="collapse-item" href="login_admin.html">Fichas de alumnos</a><a class="collapse-item" href="register.html">Gráficas de encuestas</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="collapsePages" class="collapse" aria-labelledby="headingTwo" aria-controls="collapsePages" data-bs-parent="#accordionSidebar">
+                                    <div class="bg-white border rounded py-2 collapse-inner">
+                                        <h6 class="collapse-header">LOGIN SCREENS:</h6><a class="collapse-item" href="#">Login</a><a class="collapse-item" href="#">Register</a><a class="collapse-item" href="#">Forgot Password</a>
+                                        <h6 class="collapse-header">OTHER PAGES:</h6><a class="collapse-item" href="#">404 Page</a><a class="collapse-item" href="#">Blank Page</a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="nav-item"><a class="nav-link" href="charts.html"><i class="fas fa-book-open"></i><span>Servicios</span></a></li>
+                            <li class="nav-item"></li>
+                            <hr class="sidebar-divider">
+                        </ul><button class="btn btn-primary" type="button" style="background: var(--bs-btn-hover-color);color: rgb(255,0,0);">Salir</button>
+                        <div class="text-center d-none d-md-inline"></div>
+                    </div>
+                </nav>
+            </div>
+        </nav>
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div id="content">
+                <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
+                    <div class="container-fluid"><a class="btn btn-light btn-icon-split" role="button"></a>
+                        <nav class="navbar navbar-light navbar-expand-md">
+                            <div class="container-fluid"><a class="navbar-brand" href="#"></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                                <div class="collapse navbar-collapse" id="navcol-1"></div>
+                            </div>
+                        </nav>
+                        <ul class="navbar-nav flex-nowrap ms-auto">
+                            <li class="nav-item dropdown no-arrow"></li>
+                        </ul>
+                    </div>
+                </nav>
+                <div class="container-fluid">
+                    <p style="color: #26344d;font-size: 30px;text-align: center;font-weight: bold;">Registro de Administrador CASE</p>
+                    <div class="card shadow mb-5"></div>
+                    <div class="row mb-3">
+                        <div class="col-lg-4 col-xl-2"></div>
+                        <div class="col-lg-8">
+                            <div class="row mb-3 d-none">
+                                <div class="col">
+                                    <div class="card text-white bg-primary shadow">
+                                        <div class="card-body">
+                                            <div class="row mb-2">
+                                                <div class="col">
+                                                    <p class="m-0">Peformance</p>
+                                                    <p class="m-0"><strong>65.2%</strong></p>
+                                                </div>
+                                                <div class="col-auto"><i class="fas fa-rocket fa-2x"></i></div>
+                                            </div>
+                                            <p class="text-white-50 small m-0"><i class="fas fa-arrow-up"></i>&nbsp;5% since last month</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="card text-white bg-success shadow">
+                                        <div class="card-body">
+                                            <div class="row mb-2">
+                                                <div class="col">
+                                                    <p class="m-0">Peformance</p>
+                                                    <p class="m-0"><strong>65.2%</strong></p>
+                                                </div>
+                                                <div class="col-auto"><i class="fas fa-rocket fa-2x"></i></div>
+                                            </div>
+                                            <p class="text-white-50 small m-0"><i class="fas fa-arrow-up"></i>&nbsp;5% since last month</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="card shadow mb-3">
+                                        <div class="card-header py-3">
+                                            <p class="text-primary m-0 fw-bold" style="color: #26344d;--bs-primary: #26344d;--bs-primary-rgb: 38,52,77;--bs-secondary: #fac017;--bs-secondary-rgb: 250,192,23;">Datos de Administrador</p>
+                                            {% if form.errors %}
+                                            <div class="alert alert-warning">
+                                                {{form.errors}}
+                                            </div>
+                                            {% endif %}
+                                        </div>
+                                        <div class="card-body">
+                                            <form class="user" method = "POST">
+                                                {% csrf_token %}
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <div class="mb-3"><label class="form-label" for="username"><strong>Usuario</strong></label><input class="form-control" type="username" id="username" placeholder="username" name="username" value="{% if form.username.value %}{{form.username.value}}{% endif %}"></div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="mb-3"><label class="form-label" for="email"><strong>Correo electrónico</strong></label><input class="form-control" type="email" id="email" placeholder="user@example.com" name="email"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <div class="mb-3"><label class="form-label" for="password"><strong>Contraseña</strong></label><input class="form-control" type="password" id="examplePasswordInput" placeholder="Contraseña" name="password"></div>
+
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="mb-3"><label class="form-label" for="repassword"><strong>Confirmar contraseña</strong></label><input class="form-control" type="password" id="exampleRepeatPasswordInput" placeholder="Confirmar contraseña" name="repassword"></div>
+                                                    </div>
+                                                </div>
+                                                <hr><button class="btn btn-primary d-block btn-user w-100" type="submit" style="background: #d7a44c;">Guardar Administrador</button>
+                                                <hr>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="card shadow"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card shadow mb-5"></div>
+                </div>
+            </div>
+            <footer class="bg-white sticky-footer">
+                <div class="container my-auto">
+                    <div class="text-center my-auto copyright"><span>© Centro de Aprendizaje y Servicios Estudiantiles CASE&nbsp;</span></div>
+                </div>
+            </footer>
+        </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+    </div>
+    <script src="{% static 'dist/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'dist/js/theme.js' %}"></script>
+</body>
+
+</html>

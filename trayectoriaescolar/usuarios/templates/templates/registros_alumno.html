@@ -1,0 +1,39 @@
+{% extends 'index.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+
+    {% if form.errors %}
+    <div class="alert alert-danger">
+        <ul>
+            {% for error in form.errors %}
+            <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+
+    <h1>Registro de alumnos</h1>
+
+    <form action = "{% url 'guardarAlumno' %}" method = "POST">
+        {% csrf_token %}
+        {% if mensaje %}
+            <div class="alert alert-success">
+                Alumno registrado exitosamente
+            </div>
+        {% endif %}
+
+        {{form | crispy}}
+
+        <button type="submit" class="btn btn-primary">Guardar</button>
+    </form>
+
+
+
+
+
+
+
+
+{% endblock %}
